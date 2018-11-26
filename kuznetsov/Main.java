@@ -17,6 +17,8 @@ public class Main {
         String username1 = scanner.nextLine();
         System.out.printf("Enter password for %s:\n", dataBase1);
         String password1 = scanner.nextLine();
+        System.out.println("Enter names of the first table to be compared:");
+        String table1 = scanner.nextLine();
 
         System.out.println("Enter name of the second DataBase:");
         String dataBase2 = scanner.nextLine();
@@ -26,6 +28,9 @@ public class Main {
         String username2 = scanner.nextLine();
         System.out.printf("Enter password for %s:\n", dataBase2);
         String password2 = scanner.nextLine();
+        System.out.println("Enter names of the second table to be compared:");
+        String table2 = scanner.nextLine();
+
 
         System.out.println("Enter names of fields separated by comma without spaces:");
         String fields = scanner.next();
@@ -43,8 +48,8 @@ public class Main {
             Statement stmt1 = conn1.createStatement();
             Statement stmt2 = conn2.createStatement();
 
-            ResultSet rs1 = stmt1.executeQuery("SELECT " + columns + " FROM " + dataBase1);
-            ResultSet rs2 = stmt2.executeQuery("SELECT " + columns + " FROM " + dataBase2);
+            ResultSet rs1 = stmt1.executeQuery("SELECT " + columns + " FROM " + table1);
+            ResultSet rs2 = stmt2.executeQuery("SELECT " + columns + " FROM " + table2);
 
             List db1 = convertRStoList(rs1, columns);
             List db2 = convertRStoList(rs2, columns);
@@ -90,3 +95,4 @@ public class Main {
         return db1.equals(db2);
     }
 }
+
