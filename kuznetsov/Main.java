@@ -69,7 +69,7 @@ public class Main {
                 if (rs.next()) {
                     Map<String, String> map = new HashMap<>();
                     list.add(map);
-                    IntStream streamJ = IntStream.range(1, columns.size());
+                    IntStream streamJ = IntStream.range(0, columns.size());
                     streamJ.forEach(j -> {
                         try {
                             map.put(columns.get(j), rs.getString(j + 1));
